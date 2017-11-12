@@ -7,11 +7,11 @@ object SparkCatalogExamples {
   def main(args: Array[String]) {
 
     val sparkSession = SparkSession.builder.
-        master("local")
+      master("local")
       .appName("spark  example")
       .getOrCreate()
-    val df = sparkSession.read.csv("src/main/resources/sales.csv")
-    df.createTempView("sales")
+    val df = sparkSession.read.csv("src/main/resources/Cricket_Node.csv")
+    df.createTempView("cricket")
 
     //interacting with catalogue
 
@@ -26,19 +26,17 @@ object SparkCatalogExamples {
     catalog.listTables().select("name").show()
 
     // is cached
-    println(catalog.isCached("sales"))
+    println(catalog.isCached("cricket"))
     df.cache()
-    println(catalog.isCached("sales"))
+    println(catalog.isCached("cricket"))
 
     // drop the table
-    catalog.dropTempView("sales")
+    catalog.dropTempView("cricket")
     catalog.listTables().select("name").show()
 
     // list functions
-    catalog.listFunctions().select("name","description","className","isTemporary").show(100)
+    catalog.listFunctions().select("name", "description", "className", "isTemporary").show(100)
   }
-
-
 
 
 }

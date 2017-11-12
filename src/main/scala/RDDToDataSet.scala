@@ -17,8 +17,8 @@ object RDDToDataSet {
 
 
     //read data from text file
-    val rdd = sparkContext.textFile("src/main/resources/data.txt")
-    val ds = sparkSession.read.text("src/main/resources/data.txt").as[String]
+    val rdd = sparkContext.textFile("src/main/resources/test_file.txt")
+    val ds = sparkSession.read.text("src/main/resources/test_file.txt").as[String]
 
 
     // do count

@@ -12,8 +12,7 @@ object SparkSessionExamples {
       .appName("spark session example")
       .getOrCreate()
 
-    val df = sparkSession.read.option("header","true").csv("src/main/resources/sales.csv")
-
+    val df = sparkSession.read.option("header","true").csv("src/main/resources/Cricket_Node.csv")
     df.show()
 
   }

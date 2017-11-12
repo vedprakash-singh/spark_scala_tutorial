@@ -13,7 +13,7 @@ object DataSetWordCount {
       .getOrCreate()
 
     import sparkSession.implicits._
-    val data = sparkSession.read.text("src/main/resources/data.txt").as[String]
+    val data = sparkSession.read.text("src/main/resources/test_file.txt").as[String]
 
     val words = data.flatMap(value => value.split("\\s+"))
 

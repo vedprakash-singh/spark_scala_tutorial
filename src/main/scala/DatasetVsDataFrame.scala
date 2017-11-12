@@ -5,7 +5,7 @@ import org.apache.spark.sql.SparkSession
   */
 object DatasetVsDataFrame {
 
-  case class Sales(transactionId:Int,customerId:Int,itemId:Int,amountPaid:Double)
+  case class Cricket_Node(id:Int,name:String,age:String,location:String,specialization:String)
 
   def main(args: Array[String]) {
 
@@ -20,13 +20,13 @@ object DatasetVsDataFrame {
 
     //read data from text file
 
-    val df = sparkSession.read.option("header","true").option("inferSchema","true").csv("src/main/resources/sales.csv")
-    val ds = sparkSession.read.option("header","true").option("inferSchema","true").csv("src/main/resources/sales.csv").as[Sales]
+    val df = sparkSession.read.option("header","true").option("inferSchema","true").csv("src/main/resources/Cricket_Node.csv")
+    val ds = sparkSession.read.option("header","true").option("inferSchema","true").csv("src/main/resources/Cricket_Node.csv").as[Cricket_Node]
 
 
-    val selectedDF = df.select("itemId")
+    val selectedDF = df.select("name")
 
-    val selectedDS = ds.map(_.itemId)
+    val selectedDS = ds.map(_.name)
 
     println(selectedDF.queryExecution.optimizedPlan.numberedTreeString)
 
